@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <div class="bg"></div>
+
+        <header>
+            <a href="#" class="logo">Fruits</a>
+            <div class="toggle"></div>
+            <ul class="navigation">
+                <li><a class="active" href="#">Home</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">What's New</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </header>
+
+        <div class="content">
+            <div class="textBox">
+                <h2>Eat Fresh Everyday</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio corrupti neque ab reprehenderit mollitia maiores temporibus a sed aperiam maxime doloremque nisi corporis, ratione dignissimos non eaque officia distinctio totam aspernatur placeat dolorem rem adipisci.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="imgBox">
+                <img src="apple.png" class="fruits" alt="">
+            </div>
+        </div>
+
+        <ul class="thumb">
+            <li data-text="Apple" class="active"><img src="apple.png" onclick="imgSlider('apple.png');changeBgColor('#fc4a55')" alt=""></li>
+            <li data-text="Mango"><img src="mango.png" onclick="imgSlider('mango.png');changeBgColor('#ffcc02')" alt=""></li>
+            <li data-text="Watermelon"><img src="watermelon.png" onclick="imgSlider('watermelon.png');changeBgColor('#92ba3c')" alt=""></li>
+            <li data-text="Dragon Fruits"><img src="dragonFruits.png" onclick="imgSlider('dragonFruits.png');changeBgColor('#fb6cb2')" alt=""></li>
+            <li data-text="Pineapple"><img src="pineApple.png" onclick="imgSlider('pineApple.png');changeBgColor('#ffb42b')" alt=""></li>
+        </ul>
+
+        <ul class="sci">
+            <li><a href=""><img src="facebook.png" alt=""></a></li>
+            <li><a href=""><img src="twitter.png" alt=""></a></li>
+            <li><a href=""><img src="instagram.png" alt=""></a></li>
+        </ul>
+
+
+    </section>
+
+
+<script>
+
+    //Menu con toggle
+
+    let menuToggle = document.querySelector(".toggle");
+    let navigation = document.querySelector(".navigation");
+    menuToggle.onclick = function(){
+        menuToggle.classList.toggle("active")
+        navigation.classList.toggle("active")
+
+    }
+
+
+    //Cambiar imagen cuando se hace click
+    function imgSlider(imagen){
+        document.querySelector(".fruits").src = imagen;
+    }
+
+    //cambiar color de fondo
+    function changeBgColor(color){
+        const bg = document.querySelector(".bg");
+        bg.style.background = color;
+    }
+
+
+
+
+    //Agregar clase "Active" a las miniaturas
+
+    let el = document.querySelectorAll(".thumb li")
+    for (let i = 0; i < el.length; i++) {
+        
+        el[i].onclick = function(){
+            var c = 0;
+
+            //a todos los elementos se le pone la clase check
+            while(c< el.length){
+                el[c++].className = "check";
+            }
+
+            //al elemento clickeado se le pone la clase active 
+            el[i].className = "check active"
+        }
+        
+    }
+</script>
+
+</body>
+</html>
